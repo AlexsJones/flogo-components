@@ -1,0 +1,29 @@
+{
+  "name": "demo_trigger",
+  "version": "0.0.1",
+  "type": "flogo:trigger",
+  "ref": "github.com/AlexsJones/flogo-components/demo_trigger",
+  "description": "trigger description",
+  "author": "Alex Jones",
+  "settings":[
+    {
+      "name": "setting",
+      "type": "string",
+      "value": "default"
+    }
+  ],
+  "output": [
+    {
+      "name": "output",
+      "type": "string"
+    }
+  ],
+  "handler": {
+    "settings": [
+      {
+        "name": "handler_setting",
+        "type": "string"
+      }
+    ]
+  }
+}

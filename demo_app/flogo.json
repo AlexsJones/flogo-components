@@ -5,17 +5,22 @@
   "description": "My flogo application description",
   "triggers": [
     {
-      "id": "my_rest_trigger",
-      "ref0": "github.com/TIBCOSoftware/flogo-contrib/trigger/rest",
+      "name": "my_rest_trigger",
+      "ref": "github.com/TIBCOSoftware/flogo-contrib/trigger/rest",
       "settings": {
         "port": "9233"
       },
+      "id": "my_rest_trigger",
       "handlers": [
         {
-          "actionId": "my_simple_flow",
           "settings": {
             "method": "GET",
             "path": "/test"
+          },
+          "actionId": "push_to_kafka",
+          "actionMappings": {
+            "input": [],
+            "output": []
           }
         }
       ]
@@ -23,31 +28,77 @@
   ],
   "actions": [
     {
-      "id": "my_simple_flow",
+      "id": "push_to_kafka",
+      "description": "",
+      "metadata": {
+        "input": [],
+        "output": []
+      },
       "ref": "github.com/TIBCOSoftware/flogo-contrib/action/flow",
       "data": {
         "flow": {
+          "name": "push to kafka",
+          "type": 1,
           "attributes": [],
           "rootTask": {
-            "id": 1,
+            "id": "root",
             "type": 1,
+            "links": [
+              {
+                "id": 1,
+                "from": 2,
+                "to": "kafkapub_3",
+                "type": 1,
+                "value": "true"
+              }
+            ],
             "tasks": [
               {
                 "id": 2,
-                "type": 1,
-                "activityRef": "github.com/TIBCOSoftware/flogo-contrib/activity/log",
                 "name": "log",
+                "description": "",
+                "type": 1,
+                "activityType": "",
+                "activityRef": "github.com/TIBCOSoftware/flogo-contrib/activity/log",
                 "attributes": [
                   {
                     "name": "message",
-                    "value": "Simple Log",
-                    "type": "string"
+                    "type": "string",
+                    "value": "Simple Log"
                   }
-                ]
+                ],
+                "inputMappings": []
+              },
+              {
+                "id": "kafkapub_3",
+                "name": "Publish Kafka message",
+                "description": "Publish a message to a kafka topic",
+                "type": 1,
+                "activityType": "",
+                "activityRef": "github.com/TIBCOSoftware/flogo-contrib/activity/kafkapub",
+                "attributes": [
+                  {
+                    "name": "BrokerUrls",
+                    "type": "string",
+                    "value": "kafka.kafka.svc.cluster.local:9093"
+                  },
+                  {
+                    "name": "Message",
+                    "type": "string",
+                    "value": "Test"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "flogo",
+                    "mapTo": "Topic"
+                  }
+                ],
+                "settings": {}
               }
             ],
-            "links": [
-            ]
+            "attributes": []
           }
         }
       }
