@@ -1,6 +1,6 @@
 {
   "name": "demo_trigger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "flogo:trigger",
   "ref": "github.com/AlexsJones/flogo-components/demo_app/demo_trigger",
   "description": "trigger description",

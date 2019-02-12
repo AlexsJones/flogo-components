@@ -1,6 +1,6 @@
 {
   "name": "demo_activity",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "flogo:activity",
   "description": "activity description",
   "ref": "github.com/AlexsJones/flogo-components/demo_app/demo_activity",
