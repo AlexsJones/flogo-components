@@ -3,17 +3,21 @@
   "version": "0.0.1",
   "type": "flogo:activity",
   "description": "activity description",
-  "ref": "github.com/AlexsJones/flogo-components/demo_app/demo_activitty",
+  "ref": "github.com/AlexsJones/flogo-components/demo_app/demo_activity",
   "author": "Alex Jones",
   "inputs":[
     {
-      "name": "input",
+      "name": "salutation",
+      "type": "string"
+    },
+    {
+      "name": "name",
       "type": "string"
     }
   ],
   "outputs": [
     {
-      "name": "output",
+      "name": "result",
       "type": "string"
     }
   ]

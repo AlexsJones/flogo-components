@@ -1,6 +1,7 @@
 package demo_activity
 
 import (
+	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"testing"
 
@@ -14,7 +15,7 @@ func getActivityMetadata() *activity.Metadata {
 
 	if activityMetadata == nil {
 		jsonMetadataBytes, err := ioutil.ReadFile("activity.json")
-		if err != nil{
+		if err != nil {
 			panic("No Json Metadata found for activity.json path")
 		}
 
@@ -48,8 +49,11 @@ func TestEval(t *testing.T) {
 	tc := test.NewTestActivityContext(getActivityMetadata())
 
 	//setup attrs
-
+	tc.SetInput("name", "Leon")
+	tc.SetInput("salutation", "Hello")
 	act.Eval(tc)
 
 	//check result attr
+	result := tc.GetOutput("result")
+	assert.Equal(t, result, "The Flogo engine says Hello to Leon")
 }

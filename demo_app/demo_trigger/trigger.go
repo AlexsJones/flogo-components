@@ -9,7 +9,7 @@ import (
 )
 
 // Create a new logger
-var log = logger.GetLogger("trigger-mytrigger")
+var log = logger.GetLogger("demo_trigger")
 
 // MyTriggerFactory My Trigger factory
 type MyTriggerFactory struct {

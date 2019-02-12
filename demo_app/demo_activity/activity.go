@@ -5,9 +5,10 @@ import (
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
 
+
 // THIS IS ADDED
 // log is the default package logger which we'll use to log
-var log = logger.GetLogger("activity-helloworld")
+var log = logger.GetLogger("demo_activity")
 
 // MyActivity is a stub for your Activity implementation
 type MyActivity struct {
